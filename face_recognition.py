@@ -8,23 +8,26 @@ people = ['Mike Iannotti', 'Elton John']
 face_recognizer = cv.face.LBPHFaceRecognizer_create()
 face_recognizer.read('face_trained.yml')
 
-# 0 for webcam
+# 0 for windows webcam, 0 for iphone external camera on macos
+# 1 for macos webcam.
+# Define video capture (index)
 cap = cv.VideoCapture(0)
 while cap.isOpened():
+    
     
     # capture each frame
     ret, frame = cap.read()
     # convert frame to grayscale
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
     # Detect the face in the frame
-    faces_rect = haar_cascade.detectMultiScale(gray, 1.1, 4)
+    faces_rect = haar_cascade.detectMultiScale(gray, 1.3, 5)
     for(x,y,w,h) in faces_rect:
         faces_roi = gray[y:y+h, x:x+h]
 
         label, confidence = face_recognizer.predict(faces_roi)
         print(f'Label = {people[label]} with a confidence of {confidence}')
 
-        cv.putText(frame, str(people[label]), (20,20), cv.FONT_HERSHEY_COMPLEX, 1.0, (0,255,0), thickness=2)
+        cv.putText(frame, str(people[label]), (x,y), cv.FONT_HERSHEY_COMPLEX, 1.0, (0,255,0), thickness=2)
         cv.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), thickness=2)
     
     cv.imshow('Detected Face', frame)

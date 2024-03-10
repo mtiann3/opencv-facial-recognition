@@ -1,5 +1,9 @@
-Facial recognition program in python with the opencv computer vision library.
+Facial recognition program in Python with the OpenCV computer vision library.
 
-This program takes a set of folders of training data of different people and uses them to train the model and decide which of the people are currently on the webcam.
+This program takes a set of folders of training data of different people and uses them to train the model and decide which people are currently on the webcam.
 
-This uses opencvs pretrained front face model.
+This uses an OpenCV pretrained front-face model.
+
+To run:
+install python, opencv, and Numpy.
+add folders of training data and replace the arrays in the files with the names of the folders.

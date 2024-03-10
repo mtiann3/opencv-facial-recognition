@@ -2,3 +2,4 @@
 labels.py.npy
 *.npy
 *.yml
+/train

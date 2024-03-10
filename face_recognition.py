@@ -9,8 +9,8 @@ face_recognizer = cv.face.LBPHFaceRecognizer_create()
 face_recognizer.read('face_trained.yml')
 
 # 0 for webcam
-cap = cv.VideoCapture(0, cv.CAP_DSHOW)
-while True:
+cap = cv.VideoCapture(0)
+while cap.isOpened():
     
     # capture each frame
     ret, frame = cap.read()
